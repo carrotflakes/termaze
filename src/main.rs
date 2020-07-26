@@ -1,7 +1,7 @@
-mod terminal;
 mod maze;
 mod maze_maker;
 mod maze_state;
+mod terminal;
 
 use maze_state::MazeState;
 

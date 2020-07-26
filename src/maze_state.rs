@@ -13,13 +13,10 @@ pub struct MazeState {
     position: (usize, usize),
 }
 
-impl MazeState{
+impl MazeState {
     pub fn new(maze: Maze) -> MazeState {
         let position = maze.start.clone();
-        MazeState{
-            maze,
-            position,
-        }
+        MazeState { maze, position }
     }
 
     pub fn mv(&mut self, key: KeyEvent) {

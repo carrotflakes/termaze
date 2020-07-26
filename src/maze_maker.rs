@@ -37,8 +37,7 @@ pub fn make_maze(width: usize, height: usize, seed: u64) -> Maze {
             }
         }
         if ps.is_empty() {
-            'find_block:
-            for y in 0..height {
+            'find_block: for y in 0..height {
                 for x in 0..width {
                     if x % 2 == 1 && y % 2 == 1 {
                         if field[y * width + x] == BLOCK {

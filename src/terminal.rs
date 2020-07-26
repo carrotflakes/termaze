@@ -1,5 +1,8 @@
-use termion::{async_stdin, cursor, clear, event::Key, input::TermRead, raw::IntoRawMode};
-use std::{time, thread, io::{stdout, Write}};
+use std::{
+    io::{stdout, Write},
+    thread, time,
+};
+use termion::{async_stdin, clear, cursor, event::Key, input::TermRead, raw::IntoRawMode};
 
 #[derive(Debug)]
 pub enum KeyEvent {
@@ -19,12 +22,12 @@ pub fn mount_terminal(f: &mut dyn FnMut(Option<KeyEvent>) -> String) {
     loop {
         let b = stdin.next();
         let key_event = match b {
-            Some(Ok(Key::Char('q'))) => {break},
+            Some(Ok(Key::Char('q'))) => break,
             Some(Ok(Key::Left)) => Some(KeyEvent::Left),
             Some(Ok(Key::Right)) => Some(KeyEvent::Right),
             Some(Ok(Key::Up)) => Some(KeyEvent::Up),
             Some(Ok(Key::Down)) => Some(KeyEvent::Down),
-            _ => None
+            _ => None,
         };
         let out = f(key_event);
         write!(stdout, "{}{}{}\r\n", clear::All, cursor::Goto(1, 1), out).unwrap();
