@@ -1,9 +1,4 @@
 # Termaze
+Play maze game in your terminal.
 
-## Usage
-
-``` sh
-$ cargo run
-```
-
-It's over.
+![demo](./demo.gif)
