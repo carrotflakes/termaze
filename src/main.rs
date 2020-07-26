@@ -6,7 +6,7 @@ mod maze_state;
 use maze_state::MazeState;
 
 fn main() {
-    let maze = maze_maker::make_maze(17, 11);
+    let maze = maze_maker::make_maze(17, 11, 0xcafef00dd15ea5e5);
     let mut maze_state = MazeState::new(maze);
 
     terminal::mount_terminal(&mut move |k| {

@@ -1,3 +1,6 @@
+pub const BLOCK: bool = true;
+pub const EMPTY: bool = false;
+
 pub struct Maze{
     pub width: usize,
     pub height: usize,
