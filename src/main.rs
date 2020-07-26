@@ -6,7 +6,8 @@ mod maze_state;
 use maze_state::MazeState;
 
 fn main() {
-    let maze = maze_maker::make_maze(17, 11, 0xcafef00dd15ea5e5);
+    let mut seed = 0xcafef00dd15ea5e5;
+    let maze = maze_maker::make_maze(8, 5, seed);
     let mut maze_state = MazeState::new(maze);
 
     terminal::mount_terminal(&mut move |k| {
@@ -18,6 +19,11 @@ fn main() {
                 terminal::KeyEvent::Down => maze_state::KeyEvent::Down,
             };
             maze_state.mv(k);
+            if maze_state.is_goal() {
+                seed += 1;
+                let maze = maze_maker::make_maze(8, 5, seed);
+                maze_state = MazeState::new(maze);
+            }
         }
         format!("{}- Arrow key to move.\r\n- q key to exit.", maze_state)
     });

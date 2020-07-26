@@ -34,6 +34,10 @@ impl MazeState{
             self.position = p;
         }
     }
+
+    pub fn is_goal(&self) -> bool {
+        self.position == self.maze.goal
+    }
 }
 
 use std::fmt;
