@@ -4,9 +4,10 @@ mod maze_state;
 mod terminal;
 
 use maze_state::MazeState;
+use std::time::SystemTime;
 
 fn main() {
-    let mut seed = 0xcafef00dd15ea5e5;
+    let mut seed = SystemTime::now().duration_since(SystemTime::UNIX_EPOCH).unwrap().as_millis() as u64;
     let maze = maze_maker::make_maze(8, 5, seed);
     let mut maze_state = MazeState::new(maze);
 
